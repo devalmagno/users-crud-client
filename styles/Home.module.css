@@ -1,122 +1,166 @@
 .container {
-  min-height: 100vh;
-  padding: 0 0.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+    width: 100%;
+    height: 100vh;
+    padding: 24px 0 0 24px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 6fr 1fr;
+    letter-spacing: 1px;
+}
+
+.container h1 {
+    font-size: 16px;
+}
+
+.navbar {
+    width: 300px;
+    height: 100%;
+    background-color: #1E2632;
+    position: fixed;
+    top: 0;
+    right: -300px;
+    border-radius: 10px 0 0 10px;
+    transition: right .8s cubic-bezier(1, 0, 0, 1);
+}
+
+.change {
+    right: 0;
+}
+
+.nav_list {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nav_list li {
+    list-style: none;
+    color: #F0F0F0;
+}
+
+.nav_list li h1 {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.nav_list li:first-child {
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+.nav_list li a button {
+    letter-spacing: 1px;
+    border: 0;
+    padding: 12px 35px;
+    color: #F0F0F0;
+    background-color: #376AED;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.8s;
+}
+
+.nav_list li a button:hover {
+    background-color: #1348CD;
+}
+
+.nav_list .space {
+    height: 200px;
+}
+
+.nav_list li p {
+    font-size: 10px;
+    text-align: center;
+}
+
+.nav_list li p a {
+    color: #376AED;
+    font-size: 11.5px;
+}
+
+.nav_list li p a:hover {
+    text-decoration: underline;
+}
+
+.hamburger_menu {
+    width: 35px;
+    height: 30px;
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.line {
+    width: 100%;
+    height: 3px;
+    background-color: #141212;
+    margin: 3px;
+    transition: all 0.8s;
+}
+
+.change .line {
+    background-color: #F0F0F0;
+}
+
+.change .line_2,
+.change .line_4 {
+    transform: rotateZ(-180deg);
+    width: 70%;
+}
+
+.change .line_3 {
+    width: 85%;
 }
 
 .main {
-  padding: 5rem 0;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.footer {
-  width: 100%;
-  height: 100px;
-  border-top: 1px solid #eaeaea;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.footer img {
-  margin-left: 0.5rem;
-}
-
-.footer a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.title a {
-  color: #0070f3;
-  text-decoration: none;
-}
-
-.title a:hover,
-.title a:focus,
-.title a:active {
-  text-decoration: underline;
-}
-
-.title {
-  margin: 0;
-  line-height: 1.15;
-  font-size: 4rem;
-}
-
-.title,
-.description {
-  text-align: center;
-}
-
-.description {
-  line-height: 1.5;
-  font-size: 1.5rem;
-}
-
-.code {
-  background: #fafafa;
-  border-radius: 5px;
-  padding: 0.75rem;
-  font-size: 1.1rem;
-  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-    Bitstream Vera Sans Mono, Courier New, monospace;
-}
-
-.grid {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 800px;
-  margin-top: 3rem;
-}
-
-.card {
-  margin: 1rem;
-  flex-basis: 45%;
-  padding: 1.5rem;
-  text-align: left;
-  color: inherit;
-  text-decoration: none;
-  border: 1px solid #eaeaea;
-  border-radius: 10px;
-  transition: color 0.15s ease, border-color 0.15s ease;
-}
-
-.card:hover,
-.card:focus,
-.card:active {
-  color: #0070f3;
-  border-color: #0070f3;
-}
-
-.card h3 {
-  margin: 0 0 1rem 0;
-  font-size: 1.5rem;
-}
-
-.card p {
-  margin: 0;
-  font-size: 1.25rem;
-  line-height: 1.5;
-}
-
-.logo {
-  height: 1em;
-}
-
-@media (max-width: 600px) {
-  .grid {
     width: 100%;
-    flex-direction: column;
-  }
 }
+
+.main table {
+    width: 100%;
+    padding-right: 24px;
+}
+
+.main table tr {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    color: #B8BBC6;
+    font-size: 14px;
+}
+
+.main table div tr {
+    width: 140px;
+}
+
+.main table .users {
+    color: #141212;
+    height: 28px;
+    overflow-y: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.users .name {
+    max-width: 120px;
+    max-height: 20px;
+    overflow: hidden;
+}
+
+.users .cpf {
+    margin-left: -30px;
+}
+
+.desktop {
+    display: none;
+}
+
+.container .footer {}
