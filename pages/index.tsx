@@ -1,12 +1,32 @@
 import Head from 'next/head'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { FiEdit2 } from 'react-icons/fi';
+import { IoMdClose } from 'react-icons/io'
+
+import { api } from '../src/services/api';
 
 import homecss from '../styles/home.module.css';
 
+interface Users {
+  id: string;
+  name: string;
+  email: string;
+  cpf: string;
+  isActive: boolean;
+  systemEntry: Date;
+}
+
 export default function Home() {
   const [navbar, setNavbar] = useState<Boolean>(false);
+  const [users, setUsers] = useState<Users[]>([]);
 
-  const showNavbar = () => {
+  useEffect(() => {
+    api.get('users').then(res => {
+      setUsers(res.data);
+    })
+  })
+
+  function showNavbar() {
     setNavbar(!navbar)
   }
 
@@ -53,27 +73,92 @@ export default function Home() {
       </header>
 
       <main className={homecss.main}>
-        <table>
-          <tr>
-            <th>NOME</th>
-            <th className={homecss.desktop}>EMAIL</th>
-            <th >CPF</th>
-            <div>
+        <table
+          className={homecss.content_table}
+        >
+          <thead>
+            <tr>
+              <th>NOME</th>
+              <th
+                className={homecss.mobile}
+              >EMAIL</th>
+              <th>CPF</th>
+              <th
+                className={homecss.mobile}
+              >CLIENTE DESDE</th>
               <th>STATUS</th>
-              <th className={homecss.desktop}>CLIENTE DESDE</th>
-              <th>AÇÕES</th>
-            </div>
-          </tr>
-          <tr className={homecss.users}>
-            <td className={homecss.name}>Lúcio Magno</td>
-            <td className={homecss.desktop}>edwardkunk2@gmail.com</td>
-            <td className={homecss.cpf}>123.458.999-41</td>
-            <div>
-              <td className={homecss.status}>ACTIVE</td>
-              <td className={homecss.desktop}>26/03/2021</td>
-              <td className={homecss.actions}></td>
-            </div>
-          </tr>
+              <th>ACTIONS</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {users.map(user => {
+              const formatedSystemEntry = user.systemEntry.toString()
+                .split('T')[0]
+                .split('-')
+                .reverse()
+                .join('/')
+              ;
+              
+              return (
+                <tr className={homecss.user}>
+                  <td>{user.name}</td>
+                  <td 
+                    className={homecss.mobile}
+                  >
+                    {user.email}
+                  </td>
+                  <td>{user.cpf}</td>
+                  <td 
+                    className={homecss.mobile}
+                  >
+                    {formatedSystemEntry}
+                  </td>
+                  <td>{user.isActive ? 'Active' : 'Inactive'}</td>
+                  <td className={homecss.actions}>
+                    <div className={homecss.edit}>
+                      <FiEdit2
+                        color="#376AED"
+                        size="20px"
+                      />
+                    </div>
+
+                    <div className={homecss.close}>
+                      <IoMdClose
+                        color="#376AED"
+                        size="24px"
+                      />
+                    </div>
+                  </td>
+                </tr>
+              );
+            })}
+
+
+            {/* <tr className={homecss.user}>
+              <td>Lúcio Magno</td>
+              <td className={homecss.mobile}>edwardkunk2@gmail.com</td>
+              <td>138.755.426-30</td>
+              <td className={homecss.mobile}>20/10/2020</td>
+              <td>Active</td>
+              <td className={homecss.actions}>
+                <div className={homecss.edit}>
+                  <FiEdit2 
+                    color="#376AED" 
+                    size="20px" 
+                  />
+                </div>
+
+                <div className={homecss.close}>
+                  <IoMdClose 
+                    color="#376AED" 
+                    size="24px"
+                  />
+                </div>
+              </td>
+            </tr> */}
+
+          </tbody>
         </table>
       </main>
 
