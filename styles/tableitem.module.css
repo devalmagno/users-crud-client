@@ -1,0 +1,37 @@
+.containerUser tr {
+    color: #141212;
+    border-bottom: 1px solid #dddddd;
+}
+
+.containerUser tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.containerUser tr:last-of-type {
+    border-bottom: 2px solid #1E2632;
+}
+
+.actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.mobile {
+    display: none;
+}
+
+.edit {
+    cursor: pointer;
+}
+
+.close {
+    cursor: pointer;
+}
+
+@media (min-width: 975px) {
+    .mobile {
+        display: block;
+    }
+}
