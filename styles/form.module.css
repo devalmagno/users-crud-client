@@ -1,0 +1,138 @@
+.container {
+    max-width: 700px;
+    width: 100%;
+    background: #fff;
+    padding: 25px 30px;
+    border-radius: 5px;
+}
+
+.container .title {
+    font-size: 25px;
+    font-weight: 500;
+    position: relative;
+}
+
+.container .title::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 30px;
+    height: 3px;
+    background: linear-gradient(135deg, #376AED , #1348CD);
+}
+
+.container form .userDetails {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px 0 12px 0;
+}
+
+form .userDetails .inputBox {
+    margin-bottom: 15px;
+    width: calc(100% / 2 - 20px);
+}
+
+.userDetails .inputBox .details {
+    /* display: block; */
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.userDetails .inputBox input {
+    height: 45px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 15px;
+    font-size: 16px;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+
+.userDetails .inputBox input:focus,
+.userDetails .inputBox input:valid {
+    border-color: #376AED;
+}
+
+form .statusDetails {
+    width: 100%;
+}
+
+form .statusDetails .statusTitle {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+form .statusDetails .category {
+    display: flex;
+    width: 40%;
+    margin: 14px 0;
+    justify-content: space-between;
+}
+
+.statusDetails .category label {
+    display: flex;
+    align-items: center;
+}
+
+.statusDetails .category .dot{
+    height: 18px;
+    width: 18px;
+    background: #d9d9d9;
+    border-radius: 50%;
+    margin-right: 10px;
+    border: 5px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.dot1:checked ~ .category .one,
+.dot2:checked ~ .category .two
+{
+    border-color: #d9d9d9;
+    background: #376AED;
+}
+
+.container form input[type="radio"] {
+    display: none;
+}
+
+form .button {
+    height: 45px;
+    width: 100%;
+}
+
+form .button input {
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    outline: none;
+    color: #fff;
+    border: 0;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 5px;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, #376AED , #1348CD);
+}
+
+form .button input:hover {
+    background: linear-gradient(-135deg, #376AED , #1348CD);
+}
+
+@media (max-width: 584px) {
+    .container {
+        max-width: 100%;
+    }
+
+    form .userDetails .inputBox {
+        width: 100%;
+    }
+
+    form .statusDetails .category {
+        width: 50%;
+    }
+}

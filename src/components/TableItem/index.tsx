@@ -5,6 +5,7 @@ import { IoMdClose } from "react-icons/io";
 import { api } from "../../services/api";
 
 import styles from '../../../styles/tableitem.module.css';
+import Link from "next/link";
 
 interface Users {
   id: string;
@@ -24,6 +25,12 @@ const TableItem = () => {
     });
   });
 
+  const removeUser = (id: string) => {
+    const confirmRemove = confirm('Tem certeza que deseja deletar esse usuário?');
+
+    if (confirmRemove) api.delete(`/users/${id}`);
+  }
+
   return (
     <tbody className={styles.containerUser}>
       {users.map((user) => {
@@ -42,10 +49,14 @@ const TableItem = () => {
             <td>{user.isActive ? "Active" : "Inactive"}</td>
             <td className={styles.actions}>
               <div className={styles.edit}>
-                <FiEdit2 color="#376AED" size="20px" />
+                <Link 
+                  href={{ pathname: '/modifyuser', query: { id: JSON.stringify(user.id) } }}
+                >
+                  <FiEdit2 color="#376AED" size="20px" />
+                </Link>
               </div>
 
-              <div className={styles.close}>
+              <div className={styles.close} onClick={() => removeUser(user.id)}>
                 <IoMdClose color="#376AED" size="24px" />
               </div>
             </td>

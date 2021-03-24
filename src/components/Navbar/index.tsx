@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
+import Link from 'next/link';
 
 import styles from '../../../styles/navbar.module.css';
 
 interface Props {
     title: string;
+    page: string;
 }
 
 const Navbar = (props: Props) => {
     const [navbar, setNavbar] = useState<Boolean>(false);
-    const { title } = props;
+    const { title, page } = props;
 
     function showNavbar() {
         setNavbar(!navbar)
@@ -31,18 +33,18 @@ const Navbar = (props: Props) => {
           <li>
             <h1>Gerenciamento de usuários</h1>
 
-            <a href="#">
-              <button>
+            <Link href={`/${page}`}>
+              <button className={styles.navigateButton}>
                 { title }
               </button>
-            </a>
-          </li>
+            </Link>
+        </li>
 
           <li className={styles.space}></li>
 
           <li>
-            <p>Desenvolvido por Lúcio Magno. <br />
-              Deseja entrar em contato? <a href="#">
+            <p className={styles.footer}>Desenvolvido por Lúcio Magno. <br />
+              Deseja entrar em contato? <a href="https://devalmagno.tk/">
                 Acesse o meu site.
               </a>
             </p>

@@ -1,29 +1,30 @@
-import Head from 'next/head'
+import Head from "next/head";
 
-import Navbar from '../src/components/Navbar';
-import TableList from '../src/components/TableList';
+import Navbar from "../src/components/Navbar";
+import TableList from "../src/components/TableList";
+import Footer from '../src/components/Footer';
 
-import homecss from '../styles/home.module.css';
+import styles from "../styles/pages.module.css";
 
 export default function Home() {
   return (
-    <div className={homecss.container}>
+    <div className={styles.container}>
       <Head>
         <title>Informações de Usuários</title>
       </Head>
 
-      <header className={homecss.header}>
-        <Navbar title="Adicionar novo usuário" />
+      <header>
+        <Navbar title="Adicionar novo usuário" page="newuser" />
         <h1>Informações de usuários</h1>
       </header>
 
-      <main className={homecss.main}>
+      <main>
         <TableList />
       </main>
 
-      <footer className={homecss.footer}>
-
+      <footer>
+        <Footer />
       </footer>
     </div>
-  )
+  );
 }
