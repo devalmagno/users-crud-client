@@ -44,7 +44,7 @@ const Navbar = (props: Props) => {
 
           <li>
             <p className={styles.footer}>Desenvolvido por Lúcio Magno. <br />
-              Deseja entrar em contato? <a href="https://devalmagno.tk/">
+              Deseja entrar em contato? <a href="https://devalmagno.tk/" target="_blank">
                 Acesse o meu site.
               </a>
             </p>

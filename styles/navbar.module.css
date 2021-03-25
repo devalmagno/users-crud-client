@@ -4,14 +4,14 @@
     background-color: #1E2632;
     position: fixed;
     top: 0;
-    right: -300px;
-    border-radius: 10px 0 0 10px;
+    left: -300px;
+    border-radius: 0 10px 10px 0;
     transition: right .8s cubic-bezier(1, 0, 0, 1);
     z-index: 100;
 }
 
 .change {
-    right: 0;
+    left: 0;
 }
 
 .nav_list {
@@ -75,7 +75,7 @@
     height: 30px;
     position: fixed;
     top: 24px;
-    right: 24px;
+    left: 24px;
     cursor: pointer;
     flex-direction: column;
     justify-content: space-around;
@@ -128,20 +128,21 @@
 }
 
 .footer a:hover::after {
-    transform: scaleX(1);
+transform: scaleX(1);
 }
 
-@media (min-width: 1100px) {
+@media (min-width: 1300px) {
     .navbar {
         width: 400px;  
-        right: -400px;
-    }
-    
-    .change {
-        right: 0px;
+        left: 0;
+        border-radius: 0 10px 10px 0;
     }
 
     .navigateButton {
         width: 100%;
+    }
+
+    .hamburger_menu {
+        display: none;
     }
 }

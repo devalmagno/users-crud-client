@@ -11,6 +11,18 @@
     border-bottom: 2px solid #1E2632;
 }
 
+.status {
+    font-weight: 600;
+}
+
+.active {
+    color: #5DAB7C;
+}
+
+.inactive {
+    color: #E91B25;
+}
+
 .actions {
     display: flex;
     flex-direction: row;
@@ -30,7 +42,7 @@
     cursor: pointer;
 }
 
-@media (min-width: 975px) {
+@media (min-width: 800px) {
     .mobile {
         display: block;
         position: relative;

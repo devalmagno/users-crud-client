@@ -46,7 +46,11 @@ const TableItem = () => {
             <td className={styles.mobile}>{user.email}</td>
             <td>{user.cpf}</td>
             <td className={styles.mobile}>{formatedSystemEntry}</td>
-            <td>{user.isActive ? "Active" : "Inactive"}</td>
+            <td
+              className={`${user.isActive ? styles.active : styles.inactive} ${styles.status}`}
+            >
+              {user.isActive ? "Active" : "Inactive"}
+            </td>
             <td className={styles.actions}>
               <div className={styles.edit}>
                 <Link 

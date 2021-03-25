@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 import Footer from "../src/components/Footer";
 import Navbar from "../src/components/Navbar";
@@ -13,6 +14,10 @@ function modifyUser() {
 
   return (
     <div className={styles.container}>
+      <Head>
+        <title>Alterar usuário</title>
+      </Head>
+
       <header>
         <Navbar title="Voltar para a Home" page="" />
         <h1>Modificando um usuário</h1>
@@ -30,7 +35,3 @@ function modifyUser() {
 }
 
 export default modifyUser;
-function getQueryParams(search: string): { data: any; } {
-  throw new Error("Function not implemented.");
-}
-

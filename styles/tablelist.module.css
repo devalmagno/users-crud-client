@@ -24,7 +24,7 @@
     display: none;
 }
 
-@media (min-width: 975px) {
+@media (min-width: 800px) {
     .mobile {
         display: block;
     }
