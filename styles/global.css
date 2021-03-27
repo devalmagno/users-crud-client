@@ -9,6 +9,7 @@ body {
     background-color: #F0F0F0;
     font-weight: 400;
     color: #141212;
+    box-sizing: border-box;
 }
 
 a {

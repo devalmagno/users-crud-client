@@ -1,23 +1,39 @@
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
 import React, { FormEvent, useEffect, useState } from "react";
 
 import { api } from "../../services/api";
 
 import styles from "../../../styles/form.module.css";
 
-interface Props {
-  id: string;
-}
+const ModifyForm = () => {
+  const router = useRouter();
+  const { id } = router.query;
+  const userID = id.toString().split(`"`)[1];
 
-const ModifyForm = (props: Props) => {
-  const id = props.id.split(`"`)[1];
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [cpf, setCpf] = useState("");
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
-    api.get(`/users/${id}`)
+    document.querySelector('#cpf').addEventListener('keydown', function(event) {
+      const cpf = document.getElementById('cpf');
+  
+      if (event.keyCode != 8) {
+        if (cpf.value.length == 3 || cpf.value.length == 7) {
+          cpf.value += ".";
+        }
+    
+        if (cpf.value.length == 11) {
+          cpf.value += "-";
+        }
+      }
+    });
+  });
+
+
+  useEffect(() => {
+    api.get(`/users/${userID}`)
       .then((res) => {
         const { name, email, cpf, isActive } = res.data;
 
@@ -38,22 +54,11 @@ const ModifyForm = (props: Props) => {
       .catch((err) => console.log(err.message));
   }, []);
 
-  const cpfTemplate = () => {
-    const cpf = document.getElementById("cpf");
-    if (cpf.value.length == 3 || cpf.value.length == 7) {
-      cpf.value += ".";
-    }
-
-    if (cpf.value.length == 11) {
-      cpf.value += "-";
-    }
-  };
-
   const handleCreateUser = (e: FormEvent) => {
     e.preventDefault();
 
     api
-      .put(`/users/${id}`, {
+      .put(`/users/${userID}`, {
         name,
         email,
         cpf,
@@ -106,7 +111,6 @@ const ModifyForm = (props: Props) => {
               placeholder="Alterar cpf"
               maxLength={14}
               value={cpf}
-              onKeyUp={() => cpfTemplate()}
               onChange={(e) => {
                 setCpf(e.target.value);
               }}

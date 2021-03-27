@@ -131,18 +131,29 @@
 transform: scaleX(1);
 }
 
+@media (min-width: 1080px) {
+    .navbar {
+        left: 0;
+    }
+
+    .hamburger_menu {
+        display: none;
+    }
+}
+
 @media (min-width: 1300px) {
     .navbar {
         width: 400px;  
-        left: 0;
-        border-radius: 0 10px 10px 0;
     }
 
     .navigateButton {
         width: 100%;
     }
+}
 
+@media (max-height: 900px) {
     .hamburger_menu {
-        display: none;
+        top: 16px;
+        left: 16px;
     }
 }

@@ -1,5 +1,5 @@
 import Router from 'next/router';
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 
 import { api } from "../../services/api";
 
@@ -11,16 +11,21 @@ const Form = () => {
   const [cpf, setCpf] = useState('');
   const [isActive, setIsActive] = useState(false);
 
-  const cpfTemplate = () => {
-    const cpf = document.getElementById('cpf');
-    if (cpf.value.length == 3 || cpf.value.length == 7) {
-      cpf.value += ".";
-    }
-
-    if (cpf.value.length == 11) {
-      cpf.value += "-";
-    }
-  }
+  useEffect(() => {
+    document.querySelector('#cpf').addEventListener('keydown', function(event) {
+      const cpf = document.getElementById('cpf');
+  
+      if (event.keyCode != 8) {
+        if (cpf.value.length == 3 || cpf.value.length == 7) {
+          cpf.value += ".";
+        }
+    
+        if (cpf.value.length == 11) {
+          cpf.value += "-";
+        }
+      }
+    });
+  });
 
   const handleCreateUser = (e: FormEvent) => {
     e.preventDefault();
@@ -74,7 +79,7 @@ const Form = () => {
               placeholder="Digite seu cpf"
               maxLength={14}
               value={cpf}
-              onKeyUp={() => cpfTemplate()}
+              // onKeyDown={() => cpfTemplate()}
               onChange={(e) => { setCpf(e.target.value) }}
               required 
             />

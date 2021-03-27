@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FiEdit2 } from "react-icons/fi";
+import { FiEye } from 'react-icons/fi';
 import { IoMdClose } from "react-icons/io";
 
 import { api } from "../../services/api";

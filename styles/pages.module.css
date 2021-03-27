@@ -1,50 +1,65 @@
 .container {
     width: 100%;
     height: 100vh;
-    padding: 24px 0;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 12fr 1fr;
-    letter-spacing: 1px;
-    box-sizing: border-box;
-    overflow: hidden;
+    padding: 0 450px;
+    display: flex;
+    flex-direction: column;
 }
 
 .container header {
-    padding: 0 100px;
+    width: 100%;
+    height: 8vh;
+    display: flex;
+    align-items: center;
 }
 
-.container h1 {
-    font-size: 16px;
-    margin-left: 6px;
-    position: relative;
-    top: 5px;
+.container header h1 {
+    font-size: 18px;
+    font-weight: 600;
 }
 
-@media (min-width: 600px) {
+.container main {
+    width: 100%;
+    height: 84vh;
+}
+
+.container footer {
+    width: 100%;
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 1300px) {
+    .container {
+        padding: 0 350px;
+    }
+}
+
+@media (max-width: 1120px) {
+    .container {
+        padding: 0 310px;
+    }
+}
+
+@media (max-width: 1080px) {
+    .container {
+        padding: 0;
+    }
+
+    .container header {
+        justify-content: center;
+    }
+    
     .container main {
         display: flex;
         justify-content: center;
     }
 }
 
-@media (min-width: 900px) {
-    .container {
-        padding: 24px 100px;
-    }
-
-    .container header {
-        padding: 0;
-    }
-
-    .container main {
-        display: flex;
-        justify-content: flex-start;
-    }
-}
-
-@media (min-width: 1300px) {
-    .container {
-        padding: 24px 0 0 450px;
+@media (max-height: 900px) {
+    .container footer {
+        visibility: hidden;
     }
 }
